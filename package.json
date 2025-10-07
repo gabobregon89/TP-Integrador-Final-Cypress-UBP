@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "open": "cypress open",
+    "cypress:open:dev:chrome": "cypress open --e2e --browser chrome -e ENV=DEV",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,6 +13,7 @@
   "description": "",
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^23.2.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.6",
     "@cypress/browserify-preprocessor": "^3.0.2",
     "cypress": "^15.3.0"
   }
