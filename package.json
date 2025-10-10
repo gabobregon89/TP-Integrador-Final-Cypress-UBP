@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "open": "cypress open",
-    "cypress:open:dev:chrome": "cypress open --e2e --browser chrome -e ENV=DEV",
+    "cypress:open:e2e:dev:chrome": "cypress open --e2e --browser chrome -e ENV=DEV",
+    "cypress:open:api:dev:chrome": "cypress run --spec cypress/journeys/features/api/*.feature --browser chrome -e ENV=DEV",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
