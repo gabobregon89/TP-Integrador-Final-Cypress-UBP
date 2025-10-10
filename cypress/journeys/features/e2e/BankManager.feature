@@ -1,7 +1,7 @@
 Feature: Frontend Bank Manager Login
 
     Scenario: Validar opciones de Bank Manager
-        Given El usuario ingresa al sistema
+        Given El usuario ingresa a la seccion de Bank Manager Login
         When El usuario hace click en el boton "Bank Manager Login"
         Then El usuario deberia ver el boton1 "Add Customer"
         And El usuario deberia ver el boton2 "Open Account"

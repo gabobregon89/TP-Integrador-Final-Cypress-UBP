@@ -6,7 +6,7 @@ const envi = Cypress.env('ENV');
 // Obtenemos la URL base de la aplicación según el entorno
 const url = Cypress.env(`${envi}`).apiUrl;
 
-Given('El usuario ingresa al sistema', () => {
+Given('El usuario ingresa a la seccion de Bank Manager Login', () => {
   // Visitamos la URL base de la aplicación
   cy.visit(url);
 });
