@@ -1,13 +1,16 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
+import InicioPage from '../../../pages/globalsqa/Inicio.js';
 
 // Obtenemos el entorno actual de Cypress
 // Esto nos permite usar diferentes configuraciones según el entorno (DEV, TEST, PROD.)
 const envi = Cypress.env('ENV');
-// Obtenemos la URL base de la aplicación según el entorno
+// Obtenemos la URL a usar de la aplicación según el entorno
 const url = Cypress.env(`${envi}`).apiUrl;
 
+const elements = InicioPage.elements;
+
 Given('El usuario ingresa a la pagina de inicio', () => {
-  // Visitamos la URL base de la aplicación
+  // Visitamos la URL elegida de la aplicación
   cy.visit(url);
 });
 
@@ -18,15 +21,15 @@ Then('El usuario deberia ver el titulo {string}', (titulo) => {
 
 When('El usuario tiene que ver el boton {string}', (boton) => {
   // Buscamos el botón por su selector
-  cy.get('.home').should('be.visible').and('have.text', boton);
+  elements.homeBtn().should('be.visible').and('have.text', boton);
 });
 
 When('El usuario dispone del boton {string}', (boton) => {
   // Buscamos el botón por su selector
-  cy.get('.borderM > :nth-child(1) > .btn').should('be.visible').and('have.text', boton);
+  elements.custLogBtn().should('be.visible').and('have.text', boton);
 });
 
 When('El usuario deberia ver el boton {string}', (boton) => {
   // Buscamos el botón por su selector
-  cy.get(':nth-child(3) > .btn').should('be.visible').and('have.text', boton);
+  elements.bankManBtn().should('be.visible').and('have.text', boton);
 });

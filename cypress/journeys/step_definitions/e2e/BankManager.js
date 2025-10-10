@@ -1,11 +1,17 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
+import InicioPage from '../../../pages/globalsqa/Inicio.js';
+import BankManager from '../../../pages/globalsqa/BankManager.js';
+import AddCustomerPage from '../../../pages/globalsqa/AddCustomer.js';
+import OpenAccountPage from '../../../pages/globalsqa/OpenAccount.js';
 
 // Obtenemos el entorno actual de Cypress
 // Esto nos permite usar diferentes configuraciones según el entorno (DEV, TEST, PROD.)
 const envi = Cypress.env('ENV');
 // Obtenemos la URL base de la aplicación según el entorno
 const url = Cypress.env(`${envi}`).apiUrl;
+const elements = InicioPage.elements;
 
+// Scenario 1
 Given('El usuario ingresa a la seccion de Bank Manager Login', () => {
   // Visitamos la URL base de la aplicación
   cy.visit(url);
@@ -13,89 +19,91 @@ Given('El usuario ingresa a la seccion de Bank Manager Login', () => {
 
 When('El usuario hace click en el boton {string}', (boton) => {
   // Buscamos el botón por su selector y hacemos click
-  cy.get(':nth-child(3) > .btn').should('be.visible').and('have.text', boton).click();
+  InicioPage.clickBankManagerLogin();
 });
 
 Then('El usuario deberia ver el boton1 {string}', (boton) => {
   // Verificamos que el botón esté visible y tenga el texto esperado
-  cy.get('[ng-class="btnClass1"]').should('be.visible').and('contain.text', boton);
+  BankManager.elements.addCustBtn().should('be.visible').and('contain.text', boton);
 });
 
 When('El usuario hace click en el boton agregar {string}', (boton) => {
   // Buscamos el botón por su selector y hacemos click
-  cy.get('[ng-class="btnClass1"]').click();
+  BankManager.clickAddCustomer();
 });
 
 When('El usuario ingresa el nombre {string}', (nombre) => {
   // Ingresamos el nombre en el campo correspondiente
-  cy.get(':nth-child(1) > .form-control').type(nombre);
+  AddCustomerPage.enterFirstName(nombre);
 });
 
 When('El usuario ingresa el apellido {string}', (apellido) => {
   // Ingresamos el apellido en el campo correspondiente
-  cy.get(':nth-child(2) > .form-control').type(apellido);
+  AddCustomerPage.enterLastName(apellido);
 });
 
 When('El usuario ingresa el codigo postal {string}', (codigo) => {
   // Ingresamos el código postal en el campo correspondiente
-  cy.get(':nth-child(3) > .form-control').type(codigo);
+  AddCustomerPage.enterPostCode(codigo);
 });
 
 When('El usuario hace click en el boton {string} para enviar el formulario', (boton) => {
   // Buscamos el botón por su selector y hacemos click
-  cy.get('[name="myForm"] > .btn').should('be.visible').and('have.text', boton).click();
+  elements.submitBtn().should('be.visible').and('have.text', boton);
+  AddCustomerPage.clickSubmit();
 });
 
 Then('Se deberian borrar los campos del formulario', () => {
   // Verificamos que los campos del formulario estén vacíos
-  cy.get(':nth-child(1) > .form-control').should('have.text', '');
-  cy.get(':nth-child(2) > .form-control').should('have.text', '');
-  cy.get(':nth-child(3) > .form-control').should('have.text', '');
+  elements.firstNameInput().should('have.text', '');
+  elements.lastNameInput().should('have.text', '');
+  elements.postCodeInput().should('have.text', '');
 });
 
 
-//Scenario 2
+// Scenario 2
 Then('El usuario deberia ver el boton2 {string}', (boton) => {
     // Verificamos que el botón esté visible y tenga el texto esperado
-  cy.get('[ng-class="btnClass2"]').should('be.visible').and('contain.text', boton);
+  BankManager.elements.openAccBtn().should('be.visible').and('contain.text', boton);
 });
 
 When('El usuario hace click en el boton2 {string}', (boton) => {
   // Buscamos el botón por su selector y hacemos click
-  cy.get('[ng-class="btnClass2"]').click();
+  BankManager.clickOpenAccount();
 });
 
 When('El usuario selecciona el cliente {string}', (cliente) => {
   // Seleccionamos el cliente del dropdown
-  cy.get('[name="userSelect"]').select(1).should('have.value', '1');
+  OpenAccountPage.elements.customerSelect().select(1).should('have.value', '1');
 });
 
 When('El usuario selecciona la moneda {string}', (moneda) => {
   // Seleccionamos la moneda del dropdown
-  cy.get('[name="currency"]').select(moneda);
+  OpenAccountPage.elements.currencySelect().select(moneda);
 });
 
 When('El usuario hace click en el boton {string} para procesar', (boton) => {
     // Buscamos el botón por su selector y hacemos click
-    cy.get('[name="myForm"] > button').should('be.visible').and('have.text', boton).click();
+    OpenAccountPage.elements.processBtn().should('be.visible').and('have.text', boton);
+    OpenAccountPage.clickProcess();
 });
 
 Then('Se deberian quedar con el valor por defecto en el select', () => {
     // Verificamos que el dropdown tenga el valor por defecto
-    cy.get('[name="userSelect"]').should('contain.text', '---Customer Name---');
-    cy.get('[name="currency"]').should('contain.text', '---Currency---');
+    OpenAccountPage.elements.customerSelect().should('contain.text', '---Customer Name---');
+    OpenAccountPage.elements.currencySelect().should('contain.text', '---Currency---');
 });
 
 
-//Scenario 3
+// Scenario 3
 Then('El usuario deberia ver el boton3 {string}', (boton) => {
   // Verificamos que el botón esté visible y tenga el texto esperado
-  cy.get('[ng-class="btnClass3"]').should('be.visible').and('contain.text', boton);
+  BankManager.elements.customersBtn().should('be.visible').and('contain.text', boton);
 });
 
 When('El usuario hace click en el boton3 {string}', (boton) => {
   // Buscamos el botón por su selector y hacemos click
-  cy.get('[ng-class="btnClass3"]').click();
+  BankManager.clickCustomers();
 });
 
 Then('El usuario deberia ver el filtro de busqueda', () => {
