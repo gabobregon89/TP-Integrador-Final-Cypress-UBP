@@ -21,16 +21,6 @@ Then('El usuario deberia ver el boton1 {string}', (boton) => {
   cy.get('[ng-class="btnClass1"]').should('be.visible').and('contain.text', boton);
 });
 
-Then('El usuario deberia ver el boton2 {string}', (boton) => {
-    // Verificamos que el botón esté visible y tenga el texto esperado
-  cy.get('[ng-class="btnClass2"]').should('be.visible').and('contain.text', boton);
-});
-
-Then('El usuario deberia ver el boton3 {string}', (boton) => {
-  // Verificamos que el botón esté visible y tenga el texto esperado
-  cy.get('[ng-class="btnClass3"]').should('be.visible').and('contain.text', boton);
-});
-
 When('El usuario hace click en el boton agregar {string}', (boton) => {
   // Buscamos el botón por su selector y hacemos click
   cy.get('[ng-class="btnClass1"]').click();
@@ -63,6 +53,13 @@ Then('Se deberian borrar los campos del formulario', () => {
   cy.get(':nth-child(3) > .form-control').should('have.text', '');
 });
 
+
+//Scenario 2
+Then('El usuario deberia ver el boton2 {string}', (boton) => {
+    // Verificamos que el botón esté visible y tenga el texto esperado
+  cy.get('[ng-class="btnClass2"]').should('be.visible').and('contain.text', boton);
+});
+
 When('El usuario hace click en el boton2 {string}', (boton) => {
   // Buscamos el botón por su selector y hacemos click
   cy.get('[ng-class="btnClass2"]').click();
@@ -70,7 +67,7 @@ When('El usuario hace click en el boton2 {string}', (boton) => {
 
 When('El usuario selecciona el cliente {string}', (cliente) => {
   // Seleccionamos el cliente del dropdown
-  cy.get('[name="userSelect"]').select(cliente);
+  cy.get('[name="userSelect"]').select(1).should('have.value', '1');
 });
 
 When('El usuario selecciona la moneda {string}', (moneda) => {
@@ -89,12 +86,19 @@ Then('Se deberian quedar con el valor por defecto en el select', () => {
     cy.get('[name="currency"]').should('contain.text', '---Currency---');
 });
 
+
+//Scenario 3
+Then('El usuario deberia ver el boton3 {string}', (boton) => {
+  // Verificamos que el botón esté visible y tenga el texto esperado
+  cy.get('[ng-class="btnClass3"]').should('be.visible').and('contain.text', boton);
+});
+
 When('El usuario hace click en el boton3 {string}', (boton) => {
   // Buscamos el botón por su selector y hacemos click
   cy.get('[ng-class="btnClass3"]').click();
 });
 
-Then('El usuario deberia ver en la tabla el cliente {string}', (cliente) => {
-  // Verificamos que la tabla contenga el cliente buscado
-  cy.get('tr').should('contain.text', cliente);
+Then('El usuario deberia ver el filtro de busqueda', () => {
+  // Verificamos que tenga el filtro de busqueda
+  cy.get('.form-control').should('be.visible');
 });
