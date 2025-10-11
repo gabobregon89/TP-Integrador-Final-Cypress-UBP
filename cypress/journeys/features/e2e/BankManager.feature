@@ -5,9 +5,9 @@ Feature: Frontend Bank Manager Login
         When El usuario hace click en el boton "Bank Manager Login"
         Then El usuario deberia ver el boton1 "Add Customer"
         When El usuario hace click en el boton agregar "Add Customer"
-        And El usuario ingresa el nombre "Juan"
-        And El usuario ingresa el apellido "Perez"
-        And El usuario ingresa el codigo postal "12345"
+        And El usuario ingresa el nombre
+        And El usuario ingresa el apellido
+        And El usuario ingresa el codigo postal
         And El usuario hace click en el boton "Add Customer" para enviar el formulario
         Then Se deberian borrar los campos del formulario
         

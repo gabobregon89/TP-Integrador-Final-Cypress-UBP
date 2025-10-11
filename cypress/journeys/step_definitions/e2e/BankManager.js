@@ -3,6 +3,7 @@ import InicioPage from '../../../pages/globalsqa/Inicio.js';
 import BankManager from '../../../pages/globalsqa/BankManager.js';
 import AddCustomerPage from '../../../pages/globalsqa/AddCustomer.js';
 import OpenAccountPage from '../../../pages/globalsqa/OpenAccount.js';
+import DataGenerator from '../../../support/DataGenerator';
 
 // Obtenemos el entorno actual de Cypress
 // Esto nos permite usar diferentes configuraciones según el entorno (DEV, TEST, PROD.)
@@ -32,19 +33,19 @@ When('El usuario hace click en el boton agregar {string}', (boton) => {
   BankManager.clickAddCustomer();
 });
 
-When('El usuario ingresa el nombre {string}', (nombre) => {
+When('El usuario ingresa el nombre', () => {
   // Ingresamos el nombre en el campo correspondiente
-  AddCustomerPage.enterFirstName(nombre);
+  AddCustomerPage.enterFirstName(DataGenerator.getFisrtName());
 });
 
-When('El usuario ingresa el apellido {string}', (apellido) => {
+When('El usuario ingresa el apellido', () => {
   // Ingresamos el apellido en el campo correspondiente
-  AddCustomerPage.enterLastName(apellido);
+  AddCustomerPage.enterLastName(DataGenerator.getLastName());
 });
 
-When('El usuario ingresa el codigo postal {string}', (codigo) => {
+When('El usuario ingresa el codigo postal', () => {
   // Ingresamos el código postal en el campo correspondiente
-  AddCustomerPage.enterPostCode(codigo);
+  AddCustomerPage.enterPostCode(DataGenerator.getzipCode());
 });
 
 When('El usuario hace click en el boton {string} para enviar el formulario', (boton) => {
