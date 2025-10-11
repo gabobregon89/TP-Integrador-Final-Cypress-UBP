@@ -9,7 +9,7 @@ import OpenAccountPage from '../../../pages/globalsqa/OpenAccount.js';
 const envi = Cypress.env('ENV');
 // Obtenemos la URL base de la aplicación según el entorno
 const url = Cypress.env(`${envi}`).apiUrl;
-const elements = InicioPage.elements;
+const AddElements = AddCustomerPage.elements;
 
 // Scenario 1
 Given('El usuario ingresa a la seccion de Bank Manager Login', () => {
@@ -49,15 +49,15 @@ When('El usuario ingresa el codigo postal {string}', (codigo) => {
 
 When('El usuario hace click en el boton {string} para enviar el formulario', (boton) => {
   // Buscamos el botón por su selector y hacemos click
-  elements.submitBtn().should('be.visible').and('have.text', boton);
+  AddElements.submitBtn().should('be.visible').and('have.text', boton);
   AddCustomerPage.clickSubmit();
 });
 
 Then('Se deberian borrar los campos del formulario', () => {
   // Verificamos que los campos del formulario estén vacíos
-  elements.firstNameInput().should('have.text', '');
-  elements.lastNameInput().should('have.text', '');
-  elements.postCodeInput().should('have.text', '');
+  AddElements.firstNameInput().should('have.text', '');
+  AddElements.lastNameInput().should('have.text', '');
+  AddElements.postCodeInput().should('have.text', '');
 });
 
 

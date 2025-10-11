@@ -5,6 +5,7 @@
   "scripts": {
     "open": "cypress open",
     "cy:open:e2e:dev:chrome": "cypress open --e2e --browser chrome -e ENV=DEV",
+    "cy:open:e2e:dev:edge": "cypress open --e2e --browser edge -e ENV=DEV",
     "cy:open:api:dev:chrome": "cypress run --spec cypress/journeys/features/api/*.feature --browser chrome -e ENV=DEV",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
