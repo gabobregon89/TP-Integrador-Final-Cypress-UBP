@@ -27,8 +27,8 @@ Asegurate de tener instalados:
 # Ejecucion
 
 ## UI
-Para la ejecución de todos los test en CHROME: cy:open:e2e:dev:chrome
-Para la ejecución de todos los test en EDGE: cy:open:e2e:dev:edge
+* Para la ejecución de todos los test en CHROME: cy:open:e2e:dev:chrome
+* Para la ejecución de todos los test en EDGE: cy:open:e2e:dev:edge
 
 ## API
-Para la ejecución de los API test: cy:open:api:dev:chrome
+* Para la ejecución de los API test: cy:open:api:dev:chrome
