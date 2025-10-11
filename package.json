@@ -17,6 +17,7 @@
     "@badeball/cypress-cucumber-preprocessor": "^23.2.0",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.6",
     "@cypress/browserify-preprocessor": "^3.0.2",
-    "cypress": "^15.3.0"
+    "cypress": "^15.3.0",
+    "mochawesome": "^7.1.4"
   }
 }
