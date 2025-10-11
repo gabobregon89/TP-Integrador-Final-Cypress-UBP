@@ -1,5 +1,7 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
-import { IniciPage, CustomerPage, AccountPage } from '../../../pages/globalsqa';
+import IniciPage from '../../../pages/globalsqa';
+import CustomerPage from '../../../pages/customerPage';
+import AccountPage from '../../../pages/accountPage'; 
 
 // Obtenemos el entorno actual de Cypress
 // Esto nos permite usar diferentes configuraciones según el entorno (DEV, TEST, PROD.)
