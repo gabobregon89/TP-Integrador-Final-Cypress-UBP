@@ -1,6 +1,5 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
-import IniciPage from '../../../pages/globalsqa/Inicio';
-import CustomerPage from '../../../pages/globalsqa/Customer';
+import { IniciPage, CustomerPage, AccountPage } from '../../../pages/globalsqa';
 
 // Obtenemos el entorno actual de Cypress
 // Esto nos permite usar diferentes configuraciones según el entorno (DEV, TEST, PROD.)
@@ -50,15 +49,15 @@ Then('El usuario deberia ver el boton de salida {string}', (boton) => {
 
 Then('El usuario deberia ver el boton de transacciones {string}', (boton) => {
     // Verificamos que el botón de transacciones esté visible y tenga el texto esperado
-    cy.get('[ng-class="btnClass1"]').should('be.visible').and('contain.text', boton);
+    AccountPage.elements.transBtn().should('be.visible').and('contain.text', boton);
 });
 
 Then('El usuario deberia ver el boton de depositos {string}', (boton) => {
     // Verificamos que el botón de depositar esté visible y tenga el texto esperado
-    cy.get('[ng-class="btnClass2"]').should('be.visible').and('contain.text', boton);
+    AccountPage.elements.depositBtn().should('be.visible').and('contain.text', boton);
 });
 
 Then('El usuario deberia ver el boton de billetera {string}', (boton) => {
     // Verificamos que el botón de retirar esté visible y tenga el texto esperado
-    cy.get('[ng-class="btnClass3"]').should('be.visible').and('contain.text', boton);
+    AccountPage.elements.withdrawBtn().should('be.visible').and('contain.text', boton);
 });
