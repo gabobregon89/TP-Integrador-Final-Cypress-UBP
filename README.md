@@ -23,6 +23,7 @@ Asegurate de tener instalados:
     @bahmutov/cypress-esbuild-preprocessor
     cucumber-html-reporter
     mochawesome
+    faker
 
 # Ejecucion
 
